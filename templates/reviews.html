@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Book Reviews
+{% endblock %}
+
+{% block body %}
+
+    <h1 class="heading" style="text-align: center; padding:10px">MyBooks.Com</h1>
+    <form class="form" action="{{url_for('logout')}}">
+        <button class="btn btn-dark" type="submit" name="logout" style="margin-left: 90%;">Log Out</button>
+    </form>
+    <h3 class="sub-heading" style="text-align: left; padding-top:40px; margin-left:130px">{{book.title}}</h3>
+
+    <div class="card-body" style="margin-left:110px; color:grey">
+        <h5 class="sub-heading" style="text-align: left; padding-top:30px; color:black">Book Details</h5>
+        <hr>
+        <h6>Author - {{book.author}}</h6>
+        <h6>Published Year - {{book.year}}</h6>
+        <h6>ISBN - {{book.isbn}}</h6>
+        <h6>Average Rating - {{average_rating}}</h6>
+        <h6>Rating Count - {{rating_count}}</h6>
+        <hr>
+    </div>
+    <div class="card-body" style="margin-left:110px; color:grey">
+        <h5 class="sub-heading" style="text-align: left; color:black">Your Review</h5>
+        <hr>
+        {% if review is none %}
+
+            <div class="input-group">
+                <form class="input-group" action = "{{ url_for('reviews', isbn=book.isbn) }}" method="POST">
+                    <h6>Overall Score</h6>
+                    <div class="container">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="rating" id="inlineRadio1" value="1">
+                            <label class="form-check-label" for="inlineRadio1">1</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="rating" id="inlineRadio2" value="2">
+                            <label class="form-check-label" for="inlineRadio2">2</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="rating" id="inlineRadio3" value="3">
+                            <label class="form-check-label" for="inlineRadio3">3</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="rating" id="inlineRadio4" value="4">
+                            <label class="form-check-label" for="inlineRadio4">4</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="rating" id="inlineRadio5" value="5">
+                            <label class="form-check-label" for="inlineRadio5">5</label>
+                        </div>    
+
+                    </div>
+        
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">What do you think about this book?</span>
+                    </div>
+                        <textarea name="my_review" maxlength="1000" class="form-control" aria-label="With textarea"></textarea>
+                        <button class="btn btn-primary dark" type="submit">Submit Review</button>        
+                </form>
+            </div>
+        {% else %}
+            <h6>Overall Score - {{rating}}</h6>
+            <div class="input-group">
+                <textarea readonly class="form-control" aria-label="With textarea">{{review}}</textarea>
+            </div>
+        {% endif %}
+    </div>
+    <form action = "{{url_for('search')}}" method = "GET" style="margin: 50px;">
+        <button type = "submit" class="btn btn-primary" style="margin-left: 75px;" formmethod="GET">Go Back</button>    
+    </form>
+
+
+{% endblock %}
