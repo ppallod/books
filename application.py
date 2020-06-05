@@ -123,7 +123,7 @@ def reviews(isbn):
 
     """Get Details about the Book"""
     book = db.execute("SELECT * FROM books WHERE isbn = :isbn;",{"isbn":isbn}).fetchone()
-
+    print(book.isbn)
     data = requests.get(URL,params={"key":KEY,"isbns":book.isbn})
     rating_count = data.json()["books"][0]["work_ratings_count"]
     average_rating = data.json()["books"][0]["average_rating"]

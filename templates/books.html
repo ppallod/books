@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            
+    Books
+
+        </title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    </head>
+    <body class="body">
+        
+    <h1 class="heading" style="text-align: center; padding:10px">MyBooks.Com</h1>
+    <form class="form" action="/logout">
+        <button class="btn btn-dark" type="submit" name="logout" style="margin-left: 90%;">Log Out</button>
+    </form>
+    <h4 class="sub-heading" style="text-align: left; padding:40px; margin-left:110px">Select a Book</h4>
+    <div class="container list-group" style="padding-bottom: 40px;">
+        {% for book in books%}
+            <a class="list-group-item list-group-item-action" href="{{url_for('reviews', isbn=book.isbn)}}">{{book.title}} by {{book.author}}</a>
+        {% endfor %}
+
+    </div>
+    </body>
+</html>
