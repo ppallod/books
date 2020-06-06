@@ -1,5 +1,6 @@
-#CS-50W Project 1
-###MyBooks.Com
+<html>
+<h1>CS-50W Project 1</h1>
+<h3>MyBooks.Com</h3>
 
 In this project, I have built a Webapplication for my Book Review website - MyBooks.com
 
@@ -12,7 +13,7 @@ In this project, I have built a Webapplication for my Book Review website - MyBo
 * All the html templates are contained in the folder - templates
 
 
-####Requirements - 
+Requirements -
 * Apart from the requirements.txt for building the Python enviroment, the user needs to define Environment Variables - 'DATABASE_URL' & 'KEY'
     * DATABASE_URL - This is the Postgresql Server URL
     * KEY - GoodReads API KEY
