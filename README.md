@@ -1,5 +1,4 @@
 <html>
-<h1>CS-50W Project 1</h1>
 <h3>MyBooks.Com</h3>
 
 In this project, I have built a Webapplication for my Book Review website - MyBooks.com
